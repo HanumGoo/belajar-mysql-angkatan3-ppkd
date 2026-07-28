@@ -278,7 +278,7 @@
                     aria-expanded="false">
                     <div class="avatar-sm">
                         <img
-                            src="assets/img/profile.jpg"
+                            src="assets/kaiadmin-lite-1.2.0/assets/img/profile.jpg"
                             alt="..."
                             class="avatar-img rounded-circle" />
                     </div>
@@ -293,7 +293,7 @@
                             <div class="user-box">
                                 <div class="avatar-lg">
                                     <img
-                                        src="assets/img/profile.jpg"
+                                        src="assets/kaiadmin-lite-1.2.0/assets/img/profile.jpg"
                                         alt="image profile"
                                         class="avatar-img rounded" />
                                 </div>
@@ -314,7 +314,10 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Account Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form action="logout.php" method="post" id="logout-form">
+
+                            </form>
                         </li>
                     </div>
                 </ul>
