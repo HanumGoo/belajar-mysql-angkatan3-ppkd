@@ -68,7 +68,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-12">
 
             </div>
           </div>
