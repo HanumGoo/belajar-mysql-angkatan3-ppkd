@@ -5,10 +5,6 @@ session_regenerate_id();
 include "config/connection.php";
 // show all data from users table
 // from biggest to smallest
-$query = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
-$rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-
 $name = $_SESSION['name'];
 
 if (!$name) {
@@ -29,6 +25,10 @@ if (isset($_POST['save'])) {
 
     header("location:user.php?tambah=berhasil");
 }
+$id = isset($_GET['edit']) ? $_GET['edit'] : '';
+
+$query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
 
 
 ?>
@@ -90,7 +90,9 @@ if (isset($_POST['save'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Create New User</h3>
+                            <h3 class="fw-bold mb-3">
+                                <?php echo isset($_GET['edit']) ? "Edit User" : "Create New User" ?>
+                            </h3>
                         </div>
                     </div>
                     <div class="row">
@@ -101,17 +103,19 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Name</label>
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
-                                                required>
+                                                required value="<?php echo ($id) ? $row['name'] : 'nothing' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Email</label>
                                             <input type="text" class="form-control" name="email"
-                                                placeholder="Enter Email" required>
+                                                placeholder="Enter Email" required
+                                                value="<?php echo ($id) ? $row['email'] : 'nothing' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Password</label>
                                             <input type="password" class="form-control" name="password"
-                                                placeholder="Enter Password" required>
+                                                placeholder="Enter Password" required
+                                                value="<?php echo ($id) ? '' : 'nothing' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">
