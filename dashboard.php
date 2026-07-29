@@ -4,7 +4,7 @@ session_regenerate_id();
 $name = $_SESSION['name'];
 
 if (!$name) {
-  header("location:signin.php");
+  header("location:index.php");
 }
 
 
