@@ -12,23 +12,34 @@ if (!$name) {
 }
 
 // if save button is getting pressed
+$id = isset($_GET['edit']) ? $_GET['edit'] : '';
+
+$insert = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+$row = mysqli_fetch_assoc($insert);
+
+
 
 if (isset($_POST['save'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password'] ? $_POST['password'] : $row['password'];
 
     //pseudo code to users table, tell the table users based from user input
 
-    $query_input = mysqli_query($conn, "INSERT INTO users (name, email, password) VALUE ('$name', '$email', '$password')");
+    if ($id) {
+        $update = mysqli_query($conn, "UPDATE users SET name = '$name', email = '$email', password = '$password' WHERE id = '$id'");
+        header("location:user.php?tambah=berhasil");
+    } else {
+        $query_input = mysqli_query($conn, "INSERT INTO users (name, email, password) VALUE ('$name', '$email', '$password')");
+        header("location:user.php?tambah=berhasil");
+    }
 
-
-    header("location:user.php?tambah=berhasil");
 }
-$id = isset($_GET['edit']) ? $_GET['edit'] : '';
 
-$query = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
-$row = mysqli_fetch_assoc($query);
+
+
+
+
 
 
 ?>
@@ -103,19 +114,20 @@ $row = mysqli_fetch_assoc($query);
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Name</label>
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
-                                                required value="<?php echo ($id) ? $row['name'] : 'nothing' ?>">
+                                                required value="<?php echo ($id) ? $row['name'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Email</label>
                                             <input type="text" class="form-control" name="email"
                                                 placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['email'] : 'nothing' ?>">
+                                                value="<?php echo ($id) ? $row['email'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="" class="form-label fw-bold">Password</label>
+                                            <label for=""
+                                                class="form-label fw-bold"><?php echo ($id) ? "Password <small>(leave blank if you do not wish to change it)</small>" : 'Password' ?></label>
                                             <input type="password" class="form-control" name="password"
-                                                placeholder="Enter Password" required
-                                                value="<?php echo ($id) ? '' : 'nothing' ?>">
+                                                placeholder="Enter Password" <?php echo ($id) ? '' : 'required' ?>
+                                                value="<?php echo ($id) ? '' : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">
