@@ -24,7 +24,7 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
                 <li class="nav-item active">
-                    <a href="#dashboard" aria-expanded="false">
+                    <a href="dashboard.php" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -33,6 +33,24 @@
                     <a href="user.php" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <p>User</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="slider.php" aria-expanded="false">
+                        <i class="fas fa-image"></i>
+                        <p>Slider</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.php" aria-expanded="false">
+                        <i class="fa fa-address-book"></i>
+                        <p>Contact</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.php" aria-expanded="false">
+                        <i class="fa fa-wrench"></i>
+                        <p>Settings</p>
                     </a>
                 </li>
                 <!-- <li class="nav-section">
