@@ -17,7 +17,16 @@ if (!$name) {
 
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
+
+    // hapus file gambar berdasarkan id
+    $querying = mysqli_query($conn, "SELECT * FROM sliders WHERE id = '$delete'");
+    $rowDelete = mysqli_fetch_assoc($querying);
+    unlink("assets/img/" . $rowDelete['image']);
+
+    // delete data berdasarkan id di database
     $delete = mysqli_query($conn, "DELETE FROM sliders WHERE id = '$delete'");
+
+
     header("location:slider.php?hapus=berhasil");
 }
 
