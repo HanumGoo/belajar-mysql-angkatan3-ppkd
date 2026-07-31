@@ -39,6 +39,7 @@ if (isset($_POST['save'])) {
         $image = $filename;
 
         if ($id) {
+            unlink("assets/img/" . $row['image']);
             $update = mysqli_query($conn, "UPDATE sliders SET
             title = '$title',
             subtitle = '$subtitle',
@@ -50,6 +51,7 @@ if (isset($_POST['save'])) {
             image = '$image',
             is_active = '$is_active' WHERE id = '$id'");
             header("location:slider.php?tambah=berhasil");
+
         } else {
             $query_input = mysqli_query($conn, "INSERT INTO
             sliders
