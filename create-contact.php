@@ -5,21 +5,50 @@ session_regenerate_id();
 include "config/connection.php";
 // show all data from users table
 // from biggest to smallest
-$query = mysqli_query($conn, "SELECT * FROM contacts ORDER BY id DESC");
-$rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-
 $name = $_SESSION['name'];
 
 if (!$name) {
     header("location:index.php");
 }
 
-if (isset($_GET['delete'])) {
-    $delete = $_GET['delete'];
-    $delete = mysqli_query($conn, "DELETE FROM users WHERE id = '$delete'");
-    header("location:user.php?hapus=berhasil");
+// if save button is getting pressed
+$id = isset($_GET['edit']) ? $_GET['edit'] : '';
+
+$insert = mysqli_query($conn, "SELECT * FROM contacts WHERE id = '$id'");
+$row = mysqli_fetch_assoc($insert);
+
+
+
+if (isset($_POST['save'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    //pseudo code to users table, tell the table users based from user input
+
+    if ($id) {
+        $update = mysqli_query($conn, "UPDATE contacts SET
+        name = '$name',
+        email = '$email',
+        subject = '$subject',
+        message = '$message' WHERE id = '$id'");
+        header("location:contact.php?tambah=berhasil");
+    } else {
+        $query_input = mysqli_query($conn, "INSERT INTO
+        contacts
+        (name, email, subject, message)
+        VALUE
+        ('$name', '$email', '$subject', '$message')");
+        header("location:contact.php?tambah=berhasil");
+    }
+
 }
+
+
+
+
+
 
 
 ?>
@@ -81,53 +110,45 @@ if (isset($_GET['delete'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Contact</h3>
+                            <h3 class="fw-bold mb-3">
+                                <?php echo isset($_GET['edit']) ? "Edit Contact" : "Create New Contact" ?>
+                            </h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Subject</th>
-                                                <th>Message</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($rows as $index => $row): ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $index += 1 ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['name'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['email'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['subject'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['message'] ?>
-                                                    </td>
-                                                    <td>
-                                                        <!-- <a class="btn btn-success btn-sm"
-                                                            href="create-contact.php?edit=<?php echo $row['id'] ?>">Details</a> -->
-                                                        <a onclick="return confirm('Are you sure wanna delete this data?')"
-                                                            class="btn btn-danger btn-sm"
-                                                            href="contact.php?delete=<?php echo $row['id'] ?>">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </tbody>
-                                    </table>
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="" class="form-label fw-bold">Name</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                                                required value="<?php echo ($id) ? $row['name'] : '' ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label fw-bold">Email</label>
+                                            <input type="text" class="form-control" name="email"
+                                                placeholder="Enter Email" required
+                                                value="<?php echo ($id) ? $row['email'] : '' ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label fw-bold">Subject</label>
+                                            <input type="text" class="form-control" name="subject"
+                                                placeholder="Enter Email" required
+                                                value="<?php echo ($id) ? $row['subject'] : '' ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label fw-bold">Message</label>
+                                            <input type="text" class="form-control" name="message"
+                                                placeholder="Enter Email" required
+                                                value="<?php echo ($id) ? $row['message'] : '' ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary" type="submit" name="save">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
