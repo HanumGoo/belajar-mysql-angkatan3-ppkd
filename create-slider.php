@@ -39,7 +39,10 @@ if (isset($_POST['save'])) {
         $image = $filename;
 
         if ($id) {
-            unlink("assets/img/" . $row['image']);
+            $old_pict = "assets/img/" . $row['image'];
+            if (file_exists($old_pict)) {
+                unlink($old_pict);
+            }
             $update = mysqli_query($conn, "UPDATE sliders SET
             title = '$title',
             subtitle = '$subtitle',
