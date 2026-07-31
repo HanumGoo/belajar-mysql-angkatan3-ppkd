@@ -27,32 +27,38 @@ if (isset($_POST['save'])) {
     $button1_link = $_POST['button1_link'];
     $button2_text = $_POST['button2_text'];
     $button2_link = $_POST['button2_link'];
-    $image = $_POST['image'] ? $_POST['image'] : $row['image'];
+    $image = $_FILES['image'] ? $_FILES['image'] : $row['image'];
     $is_active = $_POST['is_active'];
 
-    //pseudo code to users table, tell the table users based from user input
+    if ($image['error'] == 0) {
+        $filename = $image['name'];
+        $filepath = "assets/img/" . $filename;
+        move_uploaded_file($image['tmp_name'], $filepath);
 
-    if ($id) {
-        $update = mysqli_query($conn, "UPDATE sliders SET
-        title = '$title',
-        subtitle = '$subtitle',
-        description = '$description',
-        button1_text = '$button1_text',
-        button1_link = '$button1_link',
-        button2_text = '$button2_text',
-        button2_link = '$button2_link',
-        image = '$image',
-        is_active = '$is_active' WHERE id = '$id'");
-        header("location:slider.php?tambah=berhasil");
-    } else {
-        $query_input = mysqli_query($conn, "INSERT INTO
-        sliders
-        (title, subtitle, description, button1_text, button1_link, button2_text, button2_link, image, is_active)
-        VALUE
-        ('$title', '$subtitle', '$description', '$button1_text', '$button1_link', '$button2_text', '$button2_link', '$image', '$is_active')");
-        header("location:slider.php?tambah=berhasil");
+        //pseudo code to users table, tell the table users based from user input
+        $image = $image['name'];
+
+        if ($id) {
+            $update = mysqli_query($conn, "UPDATE sliders SET
+            title = '$title',
+            subtitle = '$subtitle',
+            description = '$description',
+            button1_text = '$button1_text',
+            button1_link = '$button1_link',
+            button2_text = '$button2_text',
+            button2_link = '$button2_link',
+            image = '$image',
+            is_active = '$is_active' WHERE id = '$id'");
+            header("location:slider.php?tambah=berhasil");
+        } else {
+            $query_input = mysqli_query($conn, "INSERT INTO
+            sliders
+            (title, subtitle, description, button1_text, button1_link, button2_text, button2_link, image, is_active)
+            VALUE
+            ('$title', '$subtitle', '$description', '$button1_text', '$button1_link', '$button2_text', '$button2_link', '$image', '$is_active')");
+            header("location:slider.php?tambah=berhasil");
+        }
     }
-
 }
 
 
@@ -170,7 +176,7 @@ if (isset($_POST['save'])) {
                                             <label for="" class="form-label fw-bold">Image
                                                 <?php echo isset($id) ? '(leave it blank if you want keep the old image)' : '' ?></label>
                                             <input type="file" class="form-control" name="image"
-                                                placeholder="Enter Email"
+                                                placeholder="Enter Email" id="images"
                                                 src="<?php echo ($id) ? $row['image'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
@@ -229,7 +235,6 @@ if (isset($_POST['save'])) {
     <?php
     include "inc/js.php";
     ?>
-
 </body>
 
 </html>
