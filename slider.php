@@ -116,7 +116,8 @@ if (isset($_GET['delete'])) {
                                                         <?php echo $row['subtitle'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['image'] ?>
+                                                        <img src="assets/img/<?php echo $row['image'] ?>" alt=""
+                                                            class="img-fluid border">
                                                     </td>
                                                     <td>
                                                         <?php echo $row['description'] ?>

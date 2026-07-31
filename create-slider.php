@@ -27,16 +27,16 @@ if (isset($_POST['save'])) {
     $button1_link = $_POST['button1_link'];
     $button2_text = $_POST['button2_text'];
     $button2_link = $_POST['button2_link'];
-    $image = $_FILES['image'] ? $_FILES['image'] : $row['image'];
+    $image = $_FILES['image'];
     $is_active = $_POST['is_active'];
 
-    if ($image['error'] == 0) {
-        $filename = $image['name'];
+    if (($image['error'] == 0)) {
+        $filename = uniqid() . "_" . $image['name'];
         $filepath = "assets/img/" . $filename;
         move_uploaded_file($image['tmp_name'], $filepath);
 
         //pseudo code to users table, tell the table users based from user input
-        $image = $image['name'];
+        $image = $filename;
 
         if ($id) {
             $update = mysqli_query($conn, "UPDATE sliders SET
@@ -56,6 +56,26 @@ if (isset($_POST['save'])) {
             (title, subtitle, description, button1_text, button1_link, button2_text, button2_link, image, is_active)
             VALUE
             ('$title', '$subtitle', '$description', '$button1_text', '$button1_link', '$button2_text', '$button2_link', '$image', '$is_active')");
+            header("location:slider.php?tambah=berhasil");
+        }
+    } else {
+        if ($id) {
+            $update = mysqli_query($conn, "UPDATE sliders SET
+            title = '$title',
+            subtitle = '$subtitle',
+            description = '$description',
+            button1_text = '$button1_text',
+            button1_link = '$button1_link',
+            button2_text = '$button2_text',
+            button2_link = '$button2_link',
+            is_active = '$is_active' WHERE id = '$id'");
+            header("location:slider.php?tambah=berhasil");
+        } else {
+            $query_input = mysqli_query($conn, "INSERT INTO
+            sliders
+            (title, subtitle, description, button1_text, button1_link, button2_text, button2_link, image, is_active)
+            VALUE
+            ('$title', '$subtitle', '$description', '$button1_text', '$button1_link', '$button2_text', '$button2_link', null, '$is_active')");
             header("location:slider.php?tambah=berhasil");
         }
     }
@@ -185,10 +205,22 @@ if (isset($_POST['save'])) {
                                                 class="form-control"><?php echo ($id) ? $row['description'] : '' ?></textarea>
                                         </div>
                                         <div class="mb-3">
+
                                             <label for="" class="form-label fw-bold">Active</label>
-                                            <input type="number" class="form-control" name="is_active"
-                                                placeholder="1 or 0" required
-                                                value="<?php echo ($id) ? $row['is_active'] : '' ?>">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="is_active"
+                                                    id="radioDefault1" checked value="1">
+                                                <label class="form-check-label" for="is_active">
+                                                    Active
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="is_active"
+                                                    id="radioDefault2" <?php echo ($id && $row['is_active'] == 1) ? '' : 'checked' ?> value="0">
+                                                <label class="form-check-label" for="is_active">
+                                                    Disable
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">
