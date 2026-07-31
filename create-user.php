@@ -22,8 +22,7 @@ $row = mysqli_fetch_assoc($insert);
 if (isset($_POST['save'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['password'] ? $_POST['password'] : $row['password'];
-
+    $password = $_POST['password'] ? password_hash($_POST['password'], PASSWORD_DEFAULT) : $row['password'];
     //pseudo code to users table, tell the table users based from user input
 
     if ($id) {

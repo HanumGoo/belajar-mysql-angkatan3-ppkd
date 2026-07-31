@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
   $row = mysqli_fetch_assoc($login);
   var_dump($row);
 
-  if ($email == $row['email'] && $pass == $row['password']) {
+  if ($email == $row['email'] && password_verify($pass, $row['password'])) {
     // KALAU BERHASIL MASUK KE DASHBOARD
     $_SESSION['name'] = $row['name'];
     header("location:dashboard.php");
