@@ -2,7 +2,7 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="dashboard.php" class="logo">
                 <img src="assets/kaiadmin-lite-1.2.0/assets/img/kaiadmin/logo_light.svg" alt="navbar brand"
                     class="navbar-brand" height="20" />
             </a>
