@@ -215,8 +215,8 @@ if (isset($_POST['save'])) {
                 endYear.appendChild(option1);
             }
 
-            startYear.value = <?php echo ($id) ? $row['year_start'] : '' ?>;
-            endYear.value = <?php echo ($id) ? $row['year_end'] : '' ?>;
+            startYear.value = <?php echo ($id) ? $row['year_start'] : '2026' ?>;
+            endYear.value = <?php echo ($id) ? $row['year_end'] : '2026' ?>;
         })
     </script>
 </body>
