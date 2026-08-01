@@ -5,7 +5,7 @@ session_regenerate_id();
 include "config/connection.php";
 // show all data from users table
 // from biggest to smallest
-$query = mysqli_query($conn, "SELECT * FROM sliders ORDER BY id DESC");
+$query = mysqli_query($conn, "SELECT * FROM resume ORDER BY id DESC");
 $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 
@@ -17,21 +17,8 @@ if (!$name) {
 
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
-
-    // hapus file gambar berdasarkan id
-    $querying = mysqli_query($conn, "SELECT * FROM sliders WHERE id = '$delete'");
-    $rowDelete = mysqli_fetch_assoc($querying);
-    $oldpath = "assets/img/" . $rowDelete['image'];
-    if (file_exists($oldpath)) {
-
-        unlink($oldpath);
-    }
-
-    // delete data berdasarkan id di database
-    $delete = mysqli_query($conn, "DELETE FROM sliders WHERE id = '$delete'");
-
-
-    header("location:slider.php?hapus=berhasil");
+    $delete = mysqli_query($conn, "DELETE FROM resume WHERE id = '$delete'");
+    header("location:resume.php?hapus=berhasil");
 }
 
 
@@ -94,11 +81,11 @@ if (isset($_GET['delete'])) {
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
-                            <h3 class="fw-bold mb-3">Sliders</h3>
+                            <h3 class="fw-bold mb-3">Resume</h3>
                         </div>
                         <div class="ms-md-auto py-2 py-md-0">
                             <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-                            <a href="create-slider.php" class="btn btn-primary btn-round">Create New Slider</a>
+                            <a href="create-resume.php" class="btn btn-primary btn-round">Create New Resume</a>
                         </div>
                     </div>
                     <div class="row">
@@ -110,8 +97,8 @@ if (isset($_GET['delete'])) {
                                             <tr>
                                                 <th>No</th>
                                                 <th>Title</th>
+                                                <th>Years</th>
                                                 <th>Subtitle</th>
-                                                <th>Image</th>
                                                 <th>Description</th>
                                                 <th>Action</th>
                                             </tr>
@@ -126,21 +113,20 @@ if (isset($_GET['delete'])) {
                                                         <?php echo $row['title'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['subtitle'] ?>
+                                                        <?php echo $row['year_start'] . " - " . $row['year_end'] ?>
                                                     </td>
                                                     <td>
-                                                        <img src="assets/img/<?php echo $row['image'] ?>" alt=""
-                                                            class="img-fluid border" width="170">
+                                                        <?php echo $row['subtitle'] ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['description'] ?>
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-success btn-sm"
-                                                            href="create-slider.php?edit=<?php echo $row['id'] ?>">Details</a>
+                                                            href="create-resume.php?edit=<?php echo $row['id'] ?>">Edit</a>
                                                         <a onclick="return confirm('Are you sure wanna delete this data?')"
                                                             class="btn btn-danger btn-sm"
-                                                            href="slider.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                                                            href="resume.php?delete=<?php echo $row['id'] ?>">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

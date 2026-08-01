@@ -42,6 +42,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="resume.php" aria-expanded="false">
+                        <i class="fa fa-address-book"></i>
+                        <p>Resume</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="contact.php" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Contact</p>
