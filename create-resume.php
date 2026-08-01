@@ -141,15 +141,14 @@ if (isset($_POST['save'])) {
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Year Start</label>
-                                            <input type="text" class="form-control" name="year_start"
-                                                placeholder="Year Start..." required
-                                                value="<?php echo ($id) ? $row['year_start'] : '' ?>">
+                                            <select name="year_start" id="year_start" class="form-select">
+
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Year End</label>
-                                            <input type="text" class="form-control" name="year_end"
-                                                placeholder="Year End..." required
-                                                value="<?php echo ($id) ? $row['year_end'] : '' ?>">
+                                            <select name="year_end" id="year_end" class="form-select">
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">
@@ -197,6 +196,29 @@ if (isset($_POST['save'])) {
     include "inc/js.php";
     ?>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startYear = document.getElementById("year_start");
+            const endYear = document.getElementById("year_end");
+            const year_old = 1920;
+            const currentYear = new Date().getFullYear();
+
+            for (let year = currentYear; year >= year_old; year--) {
+                const option = document.createElement("option");
+                const option1 = document.createElement("option");
+                option.value = year;
+                option.textContent = year;
+                option1.value = year;
+                option1.textContent = year;
+                startYear.appendChild(option);
+
+                endYear.appendChild(option1);
+            }
+
+            startYear.value = <?php echo ($id) ? $row['year_start'] : '' ?>;
+            endYear.value = <?php echo ($id) ? $row['year_end'] : '' ?>;
+        })
+    </script>
 </body>
 
 </html>
