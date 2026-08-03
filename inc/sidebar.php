@@ -72,15 +72,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./achievement.php" aria-expanded="false">
-                        <i class="fa fa-address-book"></i>
-                        <p>Achievement</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="./blog-content.php" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Blog Content</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="./achievements.php" aria-expanded="false">
+                        <i class="fa fa-address-book"></i>
+                        <p>Achievements</p>
                     </a>
                 </li>
                 <li class="nav-item">
