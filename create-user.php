@@ -20,12 +20,19 @@ $row = mysqli_fetch_assoc($insert);
 
 
 if (isset($_POST['save'])) {
+
+
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'] ? password_hash($_POST['password'], PASSWORD_DEFAULT) : $row['password'];
     //pseudo code to users table, tell the table users based from user input
+    $email_check = mysqli_fetch_assoc(mysqli_query($conn, "SELECT email FROM users WHERE email = '$email'"));
 
-    if ($id) {
+    if ($email_check) {
+        echo "email terdeteksi sama";
+        header("location:create-user.php?tambah=gagal");
+    } else if ($id) {
         $update = mysqli_query($conn, "UPDATE users SET name = '$name', email = '$email', password = '$password' WHERE id = '$id'");
         header("location:user.php?tambah=berhasil");
     } else {
@@ -109,7 +116,13 @@ if (isset($_POST['save'])) {
                         <div class="col-sm-6 col-md-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="alert alert-warning" role="alert"
+                                        style="display: <?php echo isset($_GET['tambah']) ? 'block' : 'none' ?>">
+                                        <?php echo isset($_GET['tambah']) ? 'Email Duplikat Terdeteksi!' : 'none' ?>
+                                    </div>
+
                                     <form action="" method="post">
+
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Name</label>
                                             <input type="text" class="form-control" name="name" placeholder="Enter Name"
@@ -120,6 +133,8 @@ if (isset($_POST['save'])) {
                                             <input type="text" class="form-control" name="email"
                                                 placeholder="Enter Email" required
                                                 value="<?php echo ($id) ? $row['email'] : '' ?>">
+
+
                                         </div>
                                         <div class="mb-3">
                                             <label for=""
