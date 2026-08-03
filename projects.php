@@ -112,7 +112,7 @@ if (isset($_GET['delete'])) {
                                                         <?php echo $row['title'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['subtitle'] ?>
+                                                        <?php echo $row['type'] ?>
                                                     </td>
                                                     <td>
                                                         <img src="assets/img/<?php echo $row['image'] ?>" alt=""

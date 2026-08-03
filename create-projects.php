@@ -21,7 +21,7 @@ $row = mysqli_fetch_assoc($insert);
 
 if (isset($_POST['save'])) {
     $title = $_POST['title'];
-    $subtitle = $_POST['subtitle'];
+    $type = $_POST['type'];
     $image = $_FILES['image'];
     $link = $_POST['link'];
 
@@ -40,7 +40,7 @@ if (isset($_POST['save'])) {
             }
             $update = mysqli_query($conn, "UPDATE projects SET
             title = '$title',
-            subtitle = '$subtitle',
+            type = '$type',
             image = '$image',
             link = '$link' WHERE id = '$id'");
             header("location:projects.php?tambah=berhasil");
@@ -48,25 +48,25 @@ if (isset($_POST['save'])) {
         } else {
             $query_input = mysqli_query($conn, "INSERT INTO
             projects
-            (title, subtitle, image, link)
+            (title, type, image, link)
             VALUE
-            ('$title', '$subtitle', '$image', '$link')");
+            ('$title', '$type', '$image', '$link')");
             header("location:projects.php?tambah=berhasil");
         }
     } else {
         if ($id) {
             $update = mysqli_query($conn, "UPDATE projects SET
             title = '$title',
-            subtitle = '$subtitle',
+            type = '$type',
             link = '$link' WHERE id = '$id'");
             header("location:projects.php?tambah=berhasil");
 
         } else {
             $query_input = mysqli_query($conn, "INSERT INTO
             projects
-            (title, subtitle, link)
+            (title, type, link)
             VALUE
-            ('$title', '$subtitle', '$link')");
+            ('$title', '$type', '$link')");
             header("location:projects.php?tambah=berhasil");
         }
     }
@@ -154,10 +154,10 @@ if (isset($_POST['save'])) {
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="" class="form-label fw-bold">Subtitle</label>
-                                            <input type="text" class="form-control" name="subtitle"
+                                            <label for="" class="form-label fw-bold">Type</label>
+                                            <input type="text" class="form-control" name="type"
                                                 placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['subtitle'] : '' ?>">
+                                                value="<?php echo ($id) ? $row['type'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Image
