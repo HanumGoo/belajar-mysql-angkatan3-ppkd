@@ -20,28 +20,22 @@ $row = mysqli_fetch_assoc($insert);
 
 
 if (isset($_POST['save'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+
+    $to = "sheehanandya001@gmail.com";
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    //pseudo code to users table, tell the table users based from user input
+    // $headers = "From: admin@gmail.com\r\n";
+    // $headers .= "Reply-To: admin@gmail.com\r\n";
+    // $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    if ($id) {
-        $update = mysqli_query($conn, "UPDATE contacts SET
-        name = '$name',
-        email = '$email',
-        subject = '$subject',
-        message = '$message' WHERE id = '$id'");
-        header("location:contact.php?tambah=berhasil");
+    if (mail($to, $subject, $message)) {
+        echo "Email sent successfully.";
     } else {
-        $query_input = mysqli_query($conn, "INSERT INTO
-        contacts
-        (name, email, subject, message)
-        VALUE
-        ('$name', '$email', '$subject', '$message')");
-        header("location:contact.php?tambah=berhasil");
+        echo "failed";
     }
+
+
 
 }
 
@@ -111,7 +105,7 @@ if (isset($_POST['save'])) {
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                         <div>
                             <h3 class="fw-bold mb-3">
-                                <?php echo isset($_GET['edit']) ? "Edit Contact" : "Create New Contact" ?>
+                                <?php echo isset($_GET['edit']) ? 'Send message to: ' . $row['email'] : 'impossible' ?>
                             </h3>
                         </div>
                     </div>
@@ -121,31 +115,18 @@ if (isset($_POST['save'])) {
                                 <div class="card-body">
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <div class="mb-3">
-                                            <label for="" class="form-label fw-bold">Name</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name"
-                                                required value="<?php echo ($id) ? $row['name'] : '' ?>">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="" class="form-label fw-bold">Email</label>
-                                            <input type="text" class="form-control" name="email"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['email'] : '' ?>">
-                                        </div>
-                                        <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Subject</label>
                                             <input type="text" class="form-control" name="subject"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['subject'] : '' ?>">
+                                                placeholder="Enter Subject" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Message</label>
-                                            <input type="text" class="form-control" name="message"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['message'] : '' ?>">
+                                            <textarea type="text" class="form-control" name="message"
+                                                placeholder="Your Message" required></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">
-                                                Save
+                                                Send
                                             </button>
                                         </div>
                                     </form>

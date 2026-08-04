@@ -52,9 +52,9 @@ if (isset($_POST['save'])) {
         } else {
             $query_input = mysqli_query($conn, "INSERT INTO
             blog_content
-            (title, description, date, image, link)
+            (title, description, date, image, link, comment_count)
             VALUE
-            ('$title', '$description', '$date', '$image', '$link')");
+            ('$title', '$description', '$date', '$image', '$link', $comment_count)");
             header("location:blog-content.php?tambah=berhasil");
         }
     } else {
@@ -70,9 +70,9 @@ if (isset($_POST['save'])) {
         } else {
             $query_input = mysqli_query($conn, "INSERT INTO
             blog_content
-            (title, description, date, link)
+            (title, description, date, link, comment_count)
             VALUE
-            ('$title', '$description', '$date', '$link')");
+            ('$title', '$description', '$date', '$link', $comment_count)");
             header("location:blog-content.php?tambah=berhasil");
         }
     }

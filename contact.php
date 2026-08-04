@@ -17,8 +17,8 @@ if (!$name) {
 
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
-    $delete = mysqli_query($conn, "DELETE FROM users WHERE id = '$delete'");
-    header("location:user.php?hapus=berhasil");
+    $delete = mysqli_query($conn, "DELETE FROM contacts WHERE id = '$delete'");
+    header("location:contact.php?hapus=berhasil");
 }
 
 
@@ -88,7 +88,7 @@ if (isset($_GET['delete'])) {
                         <div class="col-sm-6 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped" id="myTable">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -118,8 +118,8 @@ if (isset($_GET['delete'])) {
                                                         <?php echo $row['message'] ?>
                                                     </td>
                                                     <td>
-                                                        <!-- <a class="btn btn-success btn-sm"
-                                                            href="create-contact.php?edit=<?php echo $row['id'] ?>">Details</a> -->
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="create-contact.php?edit=<?php echo $row['id'] ?>">Reply</a>
                                                         <a onclick="return confirm('Are you sure wanna delete this data?')"
                                                             class="btn btn-danger btn-sm"
                                                             href="contact.php?delete=<?php echo $row['id'] ?>">Delete</a>
