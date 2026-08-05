@@ -30,61 +30,61 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./blog-content.php" aria-expanded="false">
+                    <a href="app.php?page=blog-content" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Blog Content</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./projects.php" aria-expanded="false">
+                    <a href="app.php?page=projects" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Projects</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./services.php" aria-expanded="false">
+                    <a href="app.php?page=services" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./skills.php" aria-expanded="false">
+                    <a href="app.php?page=skills" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Skills</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./achievements.php" aria-expanded="false">
+                    <a href="app.php?page=achievements" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Achievements</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./resume.php" aria-expanded="false">
+                    <a href="app.php?page=resume" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Resume</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./slider.php" aria-expanded="false">
+                    <a href="app.php?page=slider" aria-expanded="false">
                         <i class="fas fa-image"></i>
                         <p>Slider</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./contact.php" aria-expanded="false">
+                    <a href="app.php?page=contact" aria-expanded="false">
                         <i class="fa fa-address-book"></i>
                         <p>Contact</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./user.php" aria-expanded="false">
+                    <a href="app.php?page=user" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./settings.php" aria-expanded="false">
+                    <a href="app.php?page=settings" aria-expanded="false">
                         <i class="fa fa-wrench"></i>
                         <p>Settings</p>
                     </a>

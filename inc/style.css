@@ -1,0 +1,6 @@
+.single-line-limit {
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides the text that overflows */
+  text-overflow: ellipsis; /* Adds the '...' */
+  width: 200px; /* Requires a fixed width or max-width */
+}
