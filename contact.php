@@ -7,7 +7,7 @@ $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
     $delete = mysqli_query($conn, "DELETE FROM contacts WHERE id = '$delete'");
-    header("location:contact.php?hapus=berhasil");
+    header("location:app.php?page=contact&hapus=berhasil");
 }
 
 
@@ -53,12 +53,12 @@ if (isset($_GET['delete'])) {
                                 </td>
                                 <td>
                                     <a class="btn btn-info btn-sm"
-                                        href="reply-contact.php?edit=<?php echo $row['id'] ?>">Reply</a>
+                                        href="app.php?page=reply-contact&edit=<?php echo $row['id'] ?>">Reply</a>
                                     <a class="btn btn-success btn-sm"
-                                        href="detail-contact.php?id=<?php echo $row['id'] ?>">Details</a>
+                                        href="app.php?page=detail-contact&id=<?php echo $row['id'] ?>">Details</a>
                                     <a onclick="return confirm('Are you sure wanna delete this data?')"
                                         class="btn btn-danger btn-sm"
-                                        href="contact.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                                        href="app.php?page=contact&delete=<?php echo $row['id'] ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

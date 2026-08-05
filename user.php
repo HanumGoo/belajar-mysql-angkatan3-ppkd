@@ -7,7 +7,8 @@ $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
   $delete = $_GET['delete'];
   $delete = mysqli_query($conn, "DELETE FROM users WHERE id = '$delete'");
-  header("location:user.php?hapus=berhasil");
+  header("location:app.php?page=user&hapus=berhasil");
+  exit();
 }
 ?>
 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
@@ -16,10 +17,15 @@ if (isset($_GET['delete'])) {
   </div>
   <div class="ms-md-auto py-2 py-md-0">
     <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-    <a href="create-user.php" class="btn btn-primary btn-round">Create New User</a>
+    <a href="app.php?page=create-user" class="btn btn-primary btn-round">Create New User</a>
   </div>
+
 </div>
 <div class="row">
+  <div class="alert alert-warning" role="alert"
+    style="display: <?php echo isset($_GET['tambah']) ? 'block' : 'none' ?>">
+    <?php echo isset($_GET['tambah']) && $_GET['tambah'] == 'berhasil' ? 'Tambah User Berhasil' : 'Gagal...' ?>
+  </div>
   <div class="col-sm-6 col-md-12">
     <div class="card">
       <div class="card-body">
@@ -39,9 +45,9 @@ if (isset($_GET['delete'])) {
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['email'] ?></td>
                 <td>
-                  <a class="btn btn-success btn-sm" href="create-user.php?edit=<?php echo $row['id'] ?>">Edit</a>
+                  <a class="btn btn-success btn-sm" href="app.php?page=create-user&edit=<?php echo $row['id'] ?>">Edit</a>
                   <a onclick="return confirm('Are you sure wanna delete this data?')" class="btn btn-danger btn-sm"
-                    href="user.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                    href="app.php?page=user&delete=<?php echo $row['id'] ?>">Delete</a>
                 </td>
               </tr>
             <?php endforeach ?>

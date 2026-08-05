@@ -20,7 +20,7 @@ if (isset($_GET['delete'])) {
     $delete = mysqli_query($conn, "DELETE FROM sliders WHERE id = '$delete'");
 
 
-    header("location:slider.php?hapus=berhasil");
+    header("location:app.php?page=slider&hapus=berhasil");
 }
 
 
@@ -32,7 +32,7 @@ if (isset($_GET['delete'])) {
     </div>
     <div class="ms-md-auto py-2 py-md-0">
         <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-        <a href="create-slider.php" class="btn btn-primary btn-round">Create New Slider</a>
+        <a href="app.php?page=create-slider" class="btn btn-primary btn-round">Create New Slider</a>
     </div>
 </div>
 <div class="row">
@@ -71,10 +71,10 @@ if (isset($_GET['delete'])) {
                                 </td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="create-slider.php?edit=<?php echo $row['id'] ?>">Details</a>
+                                        href="app.php?page=create-slider&edit=<?php echo $row['id'] ?>">Details</a>
                                     <a onclick="return confirm('Are you sure wanna delete this data?')"
                                         class="btn btn-danger btn-sm"
-                                        href="slider.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                                        href="app.php?page=slider&delete=<?php echo $row['id'] ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

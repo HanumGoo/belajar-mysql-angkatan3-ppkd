@@ -1,6 +1,7 @@
 <?php
 session_start();
 session_regenerate_id();
+ob_start();
 
 include "config/connection.php";
 // show all data from users table
@@ -70,6 +71,7 @@ if (!$name) {
 
             <div class="container">
                 <div class="page-inner">
+
 
                     <!-- GET -->
                     <?php

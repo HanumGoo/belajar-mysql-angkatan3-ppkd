@@ -7,7 +7,7 @@ $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
     $delete = mysqli_query($conn, "DELETE FROM achievements WHERE id = '$delete'");
-    header("location:achievements.php?hapus=berhasil");
+    header("location:app.php?page=achievements&hapus=berhasil");
 }
 
 
@@ -18,7 +18,7 @@ if (isset($_GET['delete'])) {
     </div>
     <div class="ms-md-auto py-2 py-md-0">
         <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-        <a href="create-achievements.php" class="btn btn-primary btn-round">Create New
+        <a href="app.php?page=create-achievements" class="btn btn-primary btn-round">Create New
             Achievement</a>
     </div>
 </div>
@@ -65,10 +65,10 @@ if (isset($_GET['delete'])) {
                                 </td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="create-achievements.php?edit=<?php echo $row['id'] ?>">Details</a>
+                                        href="app.php?page=create-achievements&edit=<?php echo $row['id'] ?>">Details</a>
                                     <a onclick="return confirm('Are you sure wanna delete this data?')"
                                         class="btn btn-danger btn-sm"
-                                        href="achievements.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                                        href="app.php?page=achievements&delete=<?php echo $row['id'] ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

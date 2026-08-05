@@ -7,7 +7,7 @@ $rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
 if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
     $delete = mysqli_query($conn, "DELETE FROM services WHERE id = '$delete'");
-    header("location:services.php?hapus=berhasil");
+    header("location:app.php?page=services&hapus=berhasil");
 }
 
 
@@ -18,7 +18,7 @@ if (isset($_GET['delete'])) {
     </div>
     <div class="ms-md-auto py-2 py-md-0">
         <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-        <a href="create-services.php" class="btn btn-primary btn-round">Create New Services</a>
+        <a href="app.php?page=create-services" class="btn btn-primary btn-round">Create New Services</a>
     </div>
 </div>
 <div class="row">
@@ -48,10 +48,10 @@ if (isset($_GET['delete'])) {
                                 </td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="create-services.php?edit=<?php echo $row['id'] ?>">Edit</a>
+                                        href="app.php?page=create-services&edit=<?php echo $row['id'] ?>">Edit</a>
                                     <a onclick="return confirm('Are you sure wanna delete this data?')"
                                         class="btn btn-danger btn-sm"
-                                        href="services.php?delete=<?php echo $row['id'] ?>">Delete</a>
+                                        href="app.php?page=services&delete=<?php echo $row['id'] ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
