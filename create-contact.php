@@ -14,6 +14,11 @@ if (!$name) {
 // if save button is getting pressed
 $id = isset($_GET['edit']) ? $_GET['edit'] : '';
 
+if (!$id) {
+    header("location:contact.php");
+    ;
+}
+
 $insert = mysqli_query($conn, "SELECT * FROM contacts WHERE id = '$id'");
 $row = mysqli_fetch_assoc($insert);
 
@@ -21,18 +26,18 @@ $row = mysqli_fetch_assoc($insert);
 
 if (isset($_POST['save'])) {
 
-    $to = "sheehanandya001@gmail.com";
+    $to = $row['email'];
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    // $headers = "From: admin@gmail.com\r\n";
-    // $headers .= "Reply-To: admin@gmail.com\r\n";
-    // $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers = "From: sheehanandya333@gmail.com\r\n";
+    $headers .= "Reply-To: sheehanandya333@gmail.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    if (mail($to, $subject, $message)) {
-        echo "Email sent successfully.";
+    if (mail($to, $subject, $message, $headers)) {
+        header("location:contact.php?pesan=berhasil");
     } else {
-        echo "failed";
+        header("location:contact.php?pesan=gagal");
     }
 
 

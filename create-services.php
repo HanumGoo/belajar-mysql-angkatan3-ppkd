@@ -122,13 +122,13 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Title</label>
                                             <input type="text" class="form-control" name="title"
-                                                placeholder="Enter Name" required
+                                                placeholder="Enter Title" required
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Icon Class</label>
                                             <input type="text" class="form-control" name="icon_class"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Icon Class" required
                                                 value="<?php echo ($id) ? $row['icon_class'] : '' ?>">
 
 

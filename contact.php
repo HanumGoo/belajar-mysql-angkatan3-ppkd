@@ -40,6 +40,9 @@ if (isset($_GET['delete'])) {
 </head>
 
 <body>
+    
+
+
     <div class="wrapper">
         <!-- Sidebar -->
         <?php
@@ -85,8 +88,13 @@ if (isset($_GET['delete'])) {
                         </div>
                     </div>
                     <div class="row">
+                        <div class="alert alert-<?= $_GET['pesan'] == 'berhasil' ? 'success' : 'warning' ?>"
+                            role="alert" style="display: <?php echo isset($_GET['pesan']) ? 'block' : 'none' ?>">
+                            <?php echo $_GET['pesan'] == 'berhasil' ? 'Pesan berhasil dikirim!' : 'Gagal Dikirim...' ?>
+                        </div>
                         <div class="col-sm-6 col-md-12">
                             <div class="card">
+
                                 <div class="card-body">
                                     <table class="table table-bordered table-striped" id="myTable">
                                         <thead>

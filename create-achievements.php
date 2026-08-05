@@ -130,49 +130,49 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Title</label>
                                             <input type="text" class="form-control" name="title"
-                                                placeholder="Enter Name" required
+                                                placeholder="Enter Title" required
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Subtitle</label>
                                             <input type="text" class="form-control" name="subtitle"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Subtitle" required
                                                 value="<?php echo ($id) ? $row['subtitle'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Project Total</label>
                                             <input type="number" class="form-control" name="project_total"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Project Total" required
                                                 value="<?php echo ($id) ? $row['project_total'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Award Total</label>
                                             <input type="number" class="form-control" name="award_total"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Award Total" required
                                                 value="<?php echo ($id) ? $row['award_total'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Customer Total</label>
                                             <input type="number" class="form-control" name="customer_total"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Customer Total" required
                                                 value="<?php echo ($id) ? $row['customer_total'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Coffee Total</label>
                                             <input type="number" class="form-control" name="coffee_total"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Coffee Total" required
                                                 value="<?php echo ($id) ? $row['coffee_total'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button Text</label>
                                             <input type="text" class="form-control" name="button_text"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button Text" required
                                                 value="<?php echo ($id) ? $row['button_text'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button Link</label>
                                             <input type="text" class="form-control" name="button_link"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button Link" required
                                                 value="<?php echo ($id) ? $row['button_link'] : '' ?>">
                                         </div>
                                         <div class="mb-3">

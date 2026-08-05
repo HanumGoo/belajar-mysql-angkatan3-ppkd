@@ -164,44 +164,44 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Title</label>
                                             <input type="text" class="form-control" name="title"
-                                                placeholder="Enter Name" required
+                                                placeholder="Enter Title" required
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Subtitle</label>
                                             <input type="text" class="form-control" name="subtitle"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Subtitle" required
                                                 value="<?php echo ($id) ? $row['subtitle'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button 1 Text</label>
                                             <input type="text" class="form-control" name="button1_text"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button 1 Text" required
                                                 value="<?php echo ($id) ? $row['button1_text'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button 1 Link</label>
                                             <input type="text" class="form-control" name="button1_link"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button 1 Link" required
                                                 value="<?php echo ($id) ? $row['button1_link'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button 2 Text</label>
                                             <input type="text" class="form-control" name="button2_text"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button 2 Text" required
                                                 value="<?php echo ($id) ? $row['button2_text'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Button 2 Link</label>
                                             <input type="text" class="form-control" name="button2_link"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Button 2 Link" required
                                                 value="<?php echo ($id) ? $row['button2_link'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Image
                                                 <?php echo isset($id) ? '(leave it blank if you want keep the old image)' : '' ?></label>
                                             <input type="file" class="form-control" name="image"
-                                                placeholder="Enter Email" id="images"
+                                                placeholder="Enter Image" id="images"
                                                 src="<?php echo ($id) ? $row['image'] : '' ?>">
                                         </div>
                                         <div class="mb-3">

@@ -150,28 +150,26 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Title</label>
                                             <input type="text" class="form-control" name="title"
-                                                placeholder="Enter Name" required
+                                                placeholder="Enter Title" required
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Type</label>
-                                            <input type="text" class="form-control" name="type"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['type'] : '' ?>">
+                                            <input type="text" class="form-control" name="type" placeholder="Enter Type"
+                                                required value="<?php echo ($id) ? $row['type'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Image
                                                 <?php echo isset($id) ? '(leave it blank if you want keep the old image)' : '' ?>
                                             </label>
                                             <input type="file" class="form-control" name="image"
-                                                placeholder="Enter Email" id="images"
+                                                placeholder="Enter Image" id="images"
                                                 src="<?php echo ($id) ? $row['image'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="link"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['link'] : '' ?>">
+                                            <input type="text" class="form-control" name="link" placeholder="Enter Link"
+                                                required value="<?php echo ($id) ? $row['link'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" type="submit" name="save">

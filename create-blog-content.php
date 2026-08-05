@@ -156,39 +156,37 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Title</label>
                                             <input type="text" class="form-control" name="title"
-                                                placeholder="Enter Name" required
+                                                placeholder="Enter Title" required
                                                 value="<?php echo ($id) ? $row['title'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Description</label>
                                             <input type="text" class="form-control" name="description"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Description" required
                                                 value="<?php echo ($id) ? $row['description'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Date</label>
-                                            <input type="date" class="form-control" name="date"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['date'] : '' ?>">
+                                            <input type="date" class="form-control" name="date" placeholder="Enter Date"
+                                                required value="<?php echo ($id) ? $row['date'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Image
                                                 <?php echo isset($id) ? '(leave it blank if you want keep the old image)' : '' ?>
                                             </label>
                                             <input type="file" class="form-control" name="image"
-                                                placeholder="Enter Email" id="images"
+                                                placeholder="Enter Image" id="images"
                                                 src="<?php echo ($id) ? $row['image'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="link"
-                                                placeholder="Enter Email" required
-                                                value="<?php echo ($id) ? $row['link'] : '' ?>">
+                                            <input type="text" class="form-control" name="link" placeholder="Enter Link"
+                                                required value="<?php echo ($id) ? $row['link'] : '' ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Comment Count (Optional)</label>
                                             <input type="number" class="form-control" name="comment_count"
-                                                placeholder="Enter Email" max="999"
+                                                placeholder="Enter Comment Count" max="999"
                                                 value="<?php echo ($id) ? $row['comment_count'] : '' ?>">
                                         </div>
                                         <div class="mb-3">

@@ -127,7 +127,7 @@ if (isset($_POST['save'])) {
                                         <div class="mb-3">
                                             <label for="" class="form-label fw-bold">Percentage</label>
                                             <input type="number" class="form-control" name="percentage"
-                                                placeholder="Enter Email" required
+                                                placeholder="Enter Percentage" required
                                                 value="<?php echo ($id) ? $row['percentage'] : '' ?>" max="100" min="0">
 
 
